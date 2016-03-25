@@ -13,7 +13,11 @@
 		}
 	</style>
 	<?php foreach( $data as $pl ): ?>
-		<div class="brick" style="width:{width}px;"><h3 style="width:100%"><?php _e( $pl->GetNama() ); ?></h3><img src="<?php _e( $pl->GetGambarUtama() ); ?>" width="100%"><p>Test isi</p></div>
+		<div class="brick" style="width:{width}px;">
+			<h3 style="width:100%"><?php _e( $pl->GetNama() ); ?></h3>
+			<img src="<?php _e( $pl->GetGambarUtama()->GetLinkGambar() ); ?>" width="100%">
+			<p><?php _e( $pl->GetDeskripsi() ); ?></p>
+		</div>
 	<?php endforeach; ?>
 	
 <!-- <div class="table-responsive">
@@ -37,7 +41,7 @@
 <?php endif; ?>
 <script type="text/javascript">
 jQuery(document).ready( function($) {
-	var temp = "<div class='brick' style='width:{width}px;'><img src='i/photo/{index}.jpg' width='100%'></div>";
+	//var temp = "<div class='brick' style='width:{width}px;'><img src='i/photo/{index}.jpg' width='100%'></div>";
 	var w = 1, h = 1, html = '', limitItem = 9;
 	/*for (var i = 0; i < limitItem; ++i) {
 		w = 1 + 3 * Math.random() << 0;
