@@ -177,12 +177,12 @@ add_action( 'honma_display_credits', 'honma_credits' );
 *
 * Content:
 * 1. Add Bootstrap & Custom Style
-* 2. Menu Walker
-* 3. Connect To Plugin
+* 2. Connect To Plugin
 * 	a. get Kategori
-* 4. Meta-Box
-* 5. Render Template
-*
+*	b. get Detail Product
+* 3. Render Template
+* 4. Millitime
+* 5. Random Number
 */
 // 1. Add Bootstrap
 // CDN
@@ -212,68 +212,7 @@ function my_scripts_enqueue() {
 }
 add_action( 'wp_enqueue_scripts', 'my_scripts_enqueue' );
 
-// 2. Menu Walker
-// class CSS_Menu_Walker extends Walker {
-
-// 	var $db_fields = array('parent' => 'menu_item_parent', 'id' => 'db_id');
-	
-// 	function start_lvl(&$output, $depth = 0, $args = array()) {
-// 		$indent = str_repeat("\t", $depth);
-// 		$output .= "\n$indent<ul>\n";
-// 	}
-	
-// 	function end_lvl(&$output, $depth = 0, $args = array()) {
-// 		$indent = str_repeat("\t", $depth);
-// 		$output .= "$indent</ul>\n";
-// 	}
-	
-// 	function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
-	
-// 		global $wp_query;
-// 		$indent = ($depth) ? str_repeat("\t", $depth) : '';
-// 		$class_names = $value = '';
-// 		$classes = empty($item->classes) ? array() : (array) $item->classes;
-		
-// 		/* Add active class */
-// 		if (in_array('current-menu-item', $classes)) {
-// 			$classes[] = 'active';
-// 			unset($classes['current-menu-item']);
-// 		}
-		
-// 		/* Check for children */
-// 		$children = get_posts(array('post_type' => 'nav_menu_item', 'nopaging' => true, 'numberposts' => 1, 'meta_key' => '_menu_item_menu_item_parent', 'meta_value' => $item->ID));
-// 		if (!empty($children)) {
-// 			$classes[] = 'has-sub';
-// 		}
-		
-// 		$class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
-// 		$class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
-		
-// 		$id = apply_filters('nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args);
-// 		$id = $id ? ' id="' . esc_attr($id) . '"' : '';
-		
-// 		$output .= $indent . '<li' . $id . $value . $class_names .'>';
-		
-// 		$attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
-// 		$attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"' : '';
-// 		$attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"' : '';
-// 		$attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
-		
-// 		$item_output = $args->before;
-// 		$item_output .= '<a'. $attributes .'><span>';
-// 		$item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-// 		$item_output .= '</span></a>';
-// 		$item_output .= $args->after;
-		
-// 		$output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
-// 	}
-	
-// 	function end_el(&$output, $item, $depth = 0, $args = array()) {
-// 		$output .= "</li>\n";
-// 	}
-// }
-
-// 3. Connect To Plugin
+// 2. Connect To Plugin
 // a. get Kategori
 function get_kategori_product() {
 	//require ( '')
@@ -291,429 +230,19 @@ function get_kategori_product() {
 
 		return $arrKategori;
 	}
-	//do_action( 'sltg_product_category_pagination');
-	/*if( class_exists('Salatiga_Plugin_Admin'))
-		echo "true";
-	else
-		echo "false";
-	if( function_exists('get_kategori_product'))
-		echo "true";
-	else
-		echo "false";*/
-	//var_dump(get_kategori_product());
 }
-// 4. Meta-Box
-// add_filter( 'rwmb_meta_boxes', 'your_prefix_meta_boxes' );
-// function fika_meta_boxes( $meta_boxes ) {
+function get_detail_product() {
+	if( class_exists( 'Salatiga_Plugin_Controller' ) ) {
+		$get_product = sanitize_text_field( $_GET[ 'product' ] );
+		$product = new Sltg_Product();
 
-//     $meta_boxes[] = array(
-//         'title'      => __( 'Test Meta Box', 'textdomain' ),
-//         'post_types' => 'post',
-//         'fields'     => array(
-//             array(
-//                 'id'   => 'name',
-//                 'name' => __( 'Name', 'textdomain' ),
-//                 'type' => 'text',
-//             ),
-//             array(
-//                 'id'      => 'gender',
-//                 'name'    => __( 'Gender', 'textdomain' ),
-//                 'type'    => 'radio',
-//                 'options' => array(
-//                     'm' => __( 'Male', 'textdomain' ),
-//                     'f' => __( 'Female', 'textdomain' ),
-//                 ),
-//             ),
-//             array(
-//                 'id'   => 'email',
-//                 'name' => __( 'Email', 'textdomain' ),
-//                 'type' => 'email',
-//             ),
-//             array(
-//                 'id'   => 'bio',
-//                 'name' => __( 'Biography', 'textdomain' ),
-//                 'type' => 'textarea',
-//             ),
-//         ),
-//     );
-//     return $meta_boxes;
-// }
-// add_filter( 'rwmb_meta_boxes', 'fika_register_meta_boxes' );
-// /**
-//  * Register meta boxes
-//  *
-//  * Remember to change "your_prefix" to actual prefix in your project
-//  *
-//  * @param array $meta_boxes List of meta boxes
-//  *
-//  * @return array
-//  */
-// function fika_register_meta_boxes( $meta_boxes )
-// {
-// 	/**
-// 	 * prefix of meta keys (optional)
-// 	 * Use underscore (_) at the beginning to make keys hidden
-// 	 * Alt.: You also can make prefix empty to disable it
-// 	 */
-// 	// Better has an underscore as last sign
-// 	$prefix = 'your_prefix_';
-// 	// 1st meta box
-// 	$meta_boxes[] = array(
-// 		// Meta box id, UNIQUE per meta box. Optional since 4.1.5
-// 		'id'         => 'standard',
-// 		// Meta box title - Will appear at the drag and drop handle bar. Required.
-// 		'title'      => __( 'Standard Fields', 'your-prefix' ),
-// 		// Post types, accept custom post types as well - DEFAULT is 'post'. Can be array (multiple post types) or string (1 post type). Optional.
-// 		'post_types' => array( 'post', 'page' ),
-// 		// Where the meta box appear: normal (default), advanced, side. Optional.
-// 		'context'    => 'normal',
-// 		// Order of meta box: high (default), low. Optional.
-// 		'priority'   => 'high',
-// 		// Auto save: true, false (default). Optional.
-// 		'autosave'   => true,
-// 		// List of meta fields
-// 		'fields'     => array(
-// 			// TEXT
-// 			array(
-// 				// Field name - Will be used as label
-// 				'name'  => __( 'Text', 'your-prefix' ),
-// 				// Field ID, i.e. the meta key
-// 				'id'    => "{$prefix}text",
-// 				// Field description (optional)
-// 				'desc'  => __( 'Text description', 'your-prefix' ),
-// 				'type'  => 'text',
-// 				// Default value (optional)
-// 				'std'   => __( 'Default text value', 'your-prefix' ),
-// 				// CLONES: Add to make the field cloneable (i.e. have multiple value)
-// 				'clone' => true,
-// 			),
-// 			// CHECKBOX
-// 			array(
-// 				'name' => __( 'Checkbox', 'your-prefix' ),
-// 				'id'   => "{$prefix}checkbox",
-// 				'type' => 'checkbox',
-// 				// Value can be 0 or 1
-// 				'std'  => 1,
-// 			),
-// 			// RADIO BUTTONS
-// 			array(
-// 				'name'    => __( 'Radio', 'your-prefix' ),
-// 				'id'      => "{$prefix}radio",
-// 				'type'    => 'radio',
-// 				// Array of 'value' => 'Label' pairs for radio options.
-// 				// Note: the 'value' is stored in meta field, not the 'Label'
-// 				'options' => array(
-// 					'value1' => __( 'Label1', 'your-prefix' ),
-// 					'value2' => __( 'Label2', 'your-prefix' ),
-// 				),
-// 			),
-// 			// SELECT BOX
-// 			array(
-// 				'name'        => __( 'Select', 'your-prefix' ),
-// 				'id'          => "{$prefix}select",
-// 				'type'        => 'select',
-// 				// Array of 'value' => 'Label' pairs for select box
-// 				'options'     => array(
-// 					'value1' => __( 'Label1', 'your-prefix' ),
-// 					'value2' => __( 'Label2', 'your-prefix' ),
-// 				),
-// 				// Select multiple values, optional. Default is false.
-// 				'multiple'    => false,
-// 				'std'         => 'value2',
-// 				'placeholder' => __( 'Select an Item', 'your-prefix' ),
-// 			),
-// 			// HIDDEN
-// 			array(
-// 				'id'   => "{$prefix}hidden",
-// 				'type' => 'hidden',
-// 				// Hidden field must have predefined value
-// 				'std'  => __( 'Hidden value', 'your-prefix' ),
-// 			),
-// 			// PASSWORD
-// 			array(
-// 				'name' => __( 'Password', 'your-prefix' ),
-// 				'id'   => "{$prefix}password",
-// 				'type' => 'password',
-// 			),
-// 			// TEXTAREA
-// 			array(
-// 				'name' => __( 'Textarea', 'your-prefix' ),
-// 				'desc' => __( 'Textarea description', 'your-prefix' ),
-// 				'id'   => "{$prefix}textarea",
-// 				'type' => 'textarea',
-// 				'cols' => 20,
-// 				'rows' => 3,
-// 			),
-// 		),
-// 		'validation' => array(
-// 			'rules'    => array(
-// 				"{$prefix}password" => array(
-// 					'required'  => true,
-// 					'minlength' => 7,
-// 				),
-// 			),
-// 			// optional override of default jquery.validate messages
-// 			'messages' => array(
-// 				"{$prefix}password" => array(
-// 					'required'  => __( 'Password is required', 'your-prefix' ),
-// 					'minlength' => __( 'Password must be at least 7 characters', 'your-prefix' ),
-// 				),
-// 			),
-// 		),
-// 	);
-// 	// 2nd meta box
-// 	$meta_boxes[] = array(
-// 		'title' => __( 'Advanced Fields', 'your-prefix' ),
-// 		'fields' => array(
-// 			// HEADING
-// 			array(
-// 				'type' => 'heading',
-// 				'name' => __( 'Heading', 'your-prefix' ),
-// 				'desc' => __( 'Optional description for this heading', 'your-prefix' ),
-// 			),
-// 			// SLIDER
-// 			array(
-// 				'name'       => __( 'Slider', 'your-prefix' ),
-// 				'id'         => "{$prefix}slider",
-// 				'type'       => 'slider',
-// 				// Text labels displayed before and after value
-// 				'prefix'     => __( '$', 'your-prefix' ),
-// 				'suffix'     => __( ' USD', 'your-prefix' ),
-// 				// jQuery UI slider options. See here http://api.jqueryui.com/slider/
-// 				'js_options' => array(
-// 					'min'  => 10,
-// 					'max'  => 255,
-// 					'step' => 5,
-// 				),
-// 			),
-// 			// NUMBER
-// 			array(
-// 				'name' => __( 'Number', 'your-prefix' ),
-// 				'id'   => "{$prefix}number",
-// 				'type' => 'number',
-// 				'min'  => 0,
-// 				'step' => 5,
-// 			),
-// 			// DATE
-// 			array(
-// 				'name'       => __( 'Date picker', 'your-prefix' ),
-// 				'id'         => "{$prefix}date",
-// 				'type'       => 'date',
-// 				// jQuery date picker options. See here http://api.jqueryui.com/datepicker
-// 				'js_options' => array(
-// 					'appendText'      => __( '(yyyy-mm-dd)', 'your-prefix' ),
-// 					'dateFormat'      => __( 'yy-mm-dd', 'your-prefix' ),
-// 					'changeMonth'     => true,
-// 					'changeYear'      => true,
-// 					'showButtonPanel' => true,
-// 				),
-// 			),
-// 			// DATETIME
-// 			array(
-// 				'name'       => __( 'Datetime picker', 'your-prefix' ),
-// 				'id'         => $prefix . 'datetime',
-// 				'type'       => 'datetime',
-// 				// jQuery datetime picker options.
-// 				// For date options, see here http://api.jqueryui.com/datepicker
-// 				// For time options, see here http://trentrichardson.com/examples/timepicker/
-// 				'js_options' => array(
-// 					'stepMinute'     => 15,
-// 					'showTimepicker' => true,
-// 				),
-// 			),
-// 			// TIME
-// 			array(
-// 				'name'       => __( 'Time picker', 'your-prefix' ),
-// 				'id'         => $prefix . 'time',
-// 				'type'       => 'time',
-// 				// jQuery datetime picker options.
-// 				// For date options, see here http://api.jqueryui.com/datepicker
-// 				// For time options, see here http://trentrichardson.com/examples/timepicker/
-// 				'js_options' => array(
-// 					'stepMinute' => 5,
-// 					'showSecond' => true,
-// 					'stepSecond' => 10,
-// 				),
-// 			),
-// 			// COLOR
-// 			array(
-// 				'name' => __( 'Color picker', 'your-prefix' ),
-// 				'id'   => "{$prefix}color",
-// 				'type' => 'color',
-// 			),
-// 			// CHECKBOX LIST
-// 			array(
-// 				'name'    => __( 'Checkbox list', 'your-prefix' ),
-// 				'id'      => "{$prefix}checkbox_list",
-// 				'type'    => 'checkbox_list',
-// 				// Options of checkboxes, in format 'value' => 'Label'
-// 				'options' => array(
-// 					'value1' => __( 'Label1', 'your-prefix' ),
-// 					'value2' => __( 'Label2', 'your-prefix' ),
-// 				),
-// 			),
-// 			// AUTOCOMPLETE
-// 			array(
-// 				'name'    => __( 'Autocomplete', 'your-prefix' ),
-// 				'id'      => "{$prefix}autocomplete",
-// 				'type'    => 'autocomplete',
-// 				// Options of autocomplete, in format 'value' => 'Label'
-// 				'options' => array(
-// 					'value1' => __( 'Label1', 'your-prefix' ),
-// 					'value2' => __( 'Label2', 'your-prefix' ),
-// 				),
-// 				// Input size
-// 				'size'    => 30,
-// 				// Clone?
-// 				'clone'   => false,
-// 			),
-// 			// EMAIL
-// 			array(
-// 				'name' => __( 'Email', 'your-prefix' ),
-// 				'id'   => "{$prefix}email",
-// 				'desc' => __( 'Email description', 'your-prefix' ),
-// 				'type' => 'email',
-// 				'std'  => 'name@email.com',
-// 			),
-// 			// RANGE
-// 			array(
-// 				'name' => __( 'Range', 'your-prefix' ),
-// 				'id'   => "{$prefix}range",
-// 				'desc' => __( 'Range description', 'your-prefix' ),
-// 				'type' => 'range',
-// 				'min'  => 0,
-// 				'max'  => 100,
-// 				'step' => 5,
-// 				'std'  => 0,
-// 			),
-// 			// URL
-// 			array(
-// 				'name' => __( 'URL', 'your-prefix' ),
-// 				'id'   => "{$prefix}url",
-// 				'desc' => __( 'URL description', 'your-prefix' ),
-// 				'type' => 'url',
-// 				'std'  => 'http://google.com',
-// 			),
-// 			// OEMBED
-// 			array(
-// 				'name' => __( 'oEmbed', 'your-prefix' ),
-// 				'id'   => "{$prefix}oembed",
-// 				'desc' => __( 'oEmbed description', 'your-prefix' ),
-// 				'type' => 'oembed',
-// 			),
-// 			// SELECT ADVANCED BOX
-// 			array(
-// 				'name'        => __( 'Select', 'your-prefix' ),
-// 				'id'          => "{$prefix}select_advanced",
-// 				'type'        => 'select_advanced',
-// 				// Array of 'value' => 'Label' pairs for select box
-// 				'options'     => array(
-// 					'value1' => __( 'Label1', 'your-prefix' ),
-// 					'value2' => __( 'Label2', 'your-prefix' ),
-// 				),
-// 				// Select multiple values, optional. Default is false.
-// 				'multiple'    => false,
-// 				// 'std'         => 'value2', // Default value, optional
-// 				'placeholder' => __( 'Select an Item', 'your-prefix' ),
-// 			),
-// 			// TAXONOMY
-// 			array(
-// 				'name'       => __( 'Taxonomy', 'your-prefix' ),
-// 				'id'         => "{$prefix}taxonomy",
-// 				'type'       => 'taxonomy',
-// 				// Taxonomy name
-// 				'taxonomy'   => 'category',
-// 				// How to show taxonomy: 'checkbox_list' (default) or 'checkbox_tree', 'select_tree', select_advanced or 'select'. Optional
-// 				'field_type' => 'checkbox_list',
-// 				// Additional arguments for get_terms() function. Optional
-// 				'query_args' => array(),
-// 			),
-// 			// POST
-// 			array(
-// 				'name'        => __( 'Posts (Pages)', 'your-prefix' ),
-// 				'id'          => "{$prefix}pages",
-// 				'type'        => 'post',
-// 				// Post type
-// 				'post_type'   => 'page',
-// 				// Field type, either 'select' or 'select_advanced' (default)
-// 				'field_type'  => 'select_advanced',
-// 				'placeholder' => __( 'Select an Item', 'your-prefix' ),
-// 				// Query arguments (optional). No settings means get all published posts
-// 				'query_args'  => array(
-// 					'post_status'    => 'publish',
-// 					'posts_per_page' => - 1,
-// 				),
-// 			),
-// 			// WYSIWYG/RICH TEXT EDITOR
-// 			array(
-// 				'name'    => __( 'WYSIWYG / Rich Text Editor', 'your-prefix' ),
-// 				'id'      => "{$prefix}wysiwyg",
-// 				'type'    => 'wysiwyg',
-// 				// Set the 'raw' parameter to TRUE to prevent data being passed through wpautop() on save
-// 				'raw'     => false,
-// 				'std'     => __( 'WYSIWYG default value', 'your-prefix' ),
-// 				// Editor settings, see wp_editor() function: look4wp.com/wp_editor
-// 				'options' => array(
-// 					'textarea_rows' => 4,
-// 					'teeny'         => true,
-// 					'media_buttons' => false,
-// 				),
-// 			),
-// 			// DIVIDER
-// 			array(
-// 				'type' => 'divider',
-// 			),
-// 			// FILE UPLOAD
-// 			array(
-// 				'name' => __( 'File Upload', 'your-prefix' ),
-// 				'id'   => "{$prefix}file",
-// 				'type' => 'file',
-// 			),
-// 			// FILE ADVANCED (WP 3.5+)
-// 			array(
-// 				'name'             => __( 'File Advanced Upload', 'your-prefix' ),
-// 				'id'               => "{$prefix}file_advanced",
-// 				'type'             => 'file_advanced',
-// 				'max_file_uploads' => 4,
-// 				'mime_type'        => 'application,audio,video', // Leave blank for all file types
-// 			),
-// 			// IMAGE UPLOAD
-// 			array(
-// 				'name' => __( 'Image Upload', 'your-prefix' ),
-// 				'id'   => "{$prefix}image",
-// 				'type' => 'image',
-// 			),
-// 			// THICKBOX IMAGE UPLOAD (WP 3.3+)
-// 			array(
-// 				'name' => __( 'Thickbox Image Upload', 'your-prefix' ),
-// 				'id'   => "{$prefix}thickbox",
-// 				'type' => 'thickbox_image',
-// 			),
-// 			// PLUPLOAD IMAGE UPLOAD (WP 3.3+)
-// 			array(
-// 				'name'             => __( 'Plupload Image Upload', 'your-prefix' ),
-// 				'id'               => "{$prefix}plupload",
-// 				'type'             => 'plupload_image',
-// 				'max_file_uploads' => 4,
-// 			),
-// 			// IMAGE ADVANCED (WP 3.5+)
-// 			array(
-// 				'name'             => __( 'Image Advanced Upload', 'your-prefix' ),
-// 				'id'               => "{$prefix}imgadv",
-// 				'type'             => 'image_advanced',
-// 				'max_file_uploads' => 4,
-// 			),
-// 			// BUTTON
-// 			array(
-// 				'id'   => "{$prefix}button",
-// 				'type' => 'button',
-// 				'name' => ' ', // Empty name will "align" the button to all field inputs
-// 			),
-// 		),
-// 	);
-// 	return $meta_boxes;
-// }
-// 5. Render Template
+		$product->HasID( $get_product );
+		
+		return $product;
+
+	}
+}
+// 3. Render Template
 function get_html_template( $location, $template_name, $attributes = null , $return_val = FALSE) {
 	if (! $attributes ) {
 		$attributes = array();
@@ -726,5 +255,17 @@ function get_html_template( $location, $template_name, $attributes = null , $ret
 		return $html;
 	//var_dump($html);
 	echo $html;
+}
+// 4. Millitime
+function millitime(){
+	$microtime = microtime();
+	$comps = explode(' ', $microtime);
+
+	// Note: Using a string here to prevent loss of precision in case of "overflow" (PHP converts it to a double)
+	return sprintf('%d%03d', $comps[1], $comps[0] * 1000);
+}
+// 5. Random Number
+function rand_num() {
+	return (mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax());
 }
 ?>
