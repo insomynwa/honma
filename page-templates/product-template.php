@@ -21,7 +21,7 @@ get_header( 'sltg' );
 									<select id="data-filter-kategori">
 										<option value="0">all</option>
 										<?php foreach( $kategoris as $kategori ): ?>
-											<option value="<?php _e( $kategori->GetId() ); ?>"><?php _e( $kategori->GetNama() ); ?></option>
+											<option value="<?php _e( $kategori->GetID() ); ?>"><?php _e( $kategori->GetNama() ); ?></option>
 										<?php endforeach; ?>
 									</select>
 								</div>

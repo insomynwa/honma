@@ -15,7 +15,7 @@ $product = get_detail_product();
 			<div class="page_section">
 				<div class="gutter">
 					<article class="single_post sltg-wrapper">
-						<div class="sltg-filter">f</div>
+						<div class="sltg-filter">filter (remove)</div>
 						<div id="sltg-content" class="sltg-content">
 							<div><h1><?php _e( $product->GetNama() ); ?></h1></div>
 							<div><img src="<?php _e( $product->GetGambarUtama()->GetLinkGambar() ); ?>?<?php echo millitime(); ?>"></div>
@@ -32,7 +32,7 @@ $product = get_detail_product();
 							<div><?php _e( $product->GetOther() ); ?></div>
 							<hr>
 							<div>
-								<?php $ukm = $product->GetUKM(); _e( $ukm->GetNama() ); ?>
+								<?php $ukm = $product->GetProducer(); _e( $ukm->GetNama() ); ?>
 							</div>
 						</div>
 						<div class="sltg-pagination"></div>

@@ -15,7 +15,7 @@
 	<?php foreach( $data as $pl ): ?>
 		<?php $w = 1 + 3 * rand_num() << 0;?>
 		<div class="brick" style="width:<?php _e( $w * 150 ); ?>px;">
-			<a href="<?php echo home_url().'/detail-product?product='. $pl->GetId(); ?>">
+			<a href="<?php echo home_url().'/detail-product?product='. $pl->GetID(); ?>">
 				<h3 style="width:100%"><?php _e( strtoupper( $pl->GetNama() ) ); ?></h3>
 				<img src="<?php _e( $pl->GetGambarUtama()->GetLinkGambar() ); ?>?<?php echo millitime(); ?>" width="100%" alt="<?php _e( $pl->GetNama() ); ?>">
 			</a>
