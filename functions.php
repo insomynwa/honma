@@ -217,13 +217,13 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_enqueue' );
 function get_kategori_product() {
 	//require ( '')
 	if( class_exists( 'Salatiga_Plugin_Controller' ) ) {
-		$kategoris = new Sltg_Kategori_Product();
+		$kategoris = new Sltg_Kategori_Product_UKM();
 
 		$arrKategori = array();
 
 		$rows = $kategoris->DataList();
 		foreach( $rows as $row ) {
-			$kategori = new Sltg_Kategori_Product();
+			$kategori = new Sltg_Kategori_Product_UKM();
 			$kategori->HasID( $row->id_kategori );
 			$arrKategori[] = $kategori;
 		}

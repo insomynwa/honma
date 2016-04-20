@@ -2,16 +2,6 @@
 	$data = $attributes[ 'product' ];
 ?>
 <?php if( sizeof( $data ) > 0 ): ?>
-	<style type="text/css">
-		.sltg-content {
-			margin: 15px;
-		}
-		.brick img {
-			margin: 0;
-			display: block;
-		}
-
-	</style>
 	<?php foreach( $data as $pl ): ?>
 		<?php $w = 1 + 3 * rand_num() << 0;?>
 		<div class="brick" style="width:<?php _e( $w * 150 ); ?>px;">

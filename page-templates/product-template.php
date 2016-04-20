@@ -16,8 +16,8 @@ get_header( 'sltg' );
 						<div class="sltg-filter">
 							<?php $kategoris = get_kategori_product(); ?>
 							<?php if ( sizeof( $kategoris ) > 0 ): ?>
-								<div>
-									<label><?php /*$obj_salatiga_plugin->test2();*/ ?>Kategori</label>
+								<div class="filter-left">
+									<span><?php /*$obj_salatiga_plugin->test2();*/ ?>Kategori</span>
 									<select id="data-filter-kategori">
 										<option value="0">all</option>
 										<?php foreach( $kategoris as $kategori ): ?>
@@ -26,22 +26,21 @@ get_header( 'sltg' );
 									</select>
 								</div>
 							<?php endif; ?>
-							<div class="input-group">
+							<div class="input-group filter-center">
 								<input type="text" id="txt-search" class="form-control" placeholder="(nama)">
 								<span class="input-group-btn">
 									<button id="btn-search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search">Cari</span></button>
 								</span>
 							</div>
-							<div>
+							<div class="filter-right">
 								<label>Jumlah List</label>
 								<select id="data-limit">
-									<option value="10">10</option>
-									<option value="50">50</option>
+									<option value="1">1</option>
+									<option value="3">3</option>
 									<option value="100">100</option>
 								</select>
 							</div>
 						</div>
-						<!-- <div>pagination</div> -->
 						<div id="sltg-content" class="sltg-content">
 						</div>
 						<div class="sltg-pagination"></div>
@@ -58,21 +57,12 @@ jQuery(document).ready( function($) {
 	var isSearching = false;
 	var kategori = $( "#data-filter-kategori" ).val();
 
-	//doRetrievePagination( "product", 1, "", "div.sltg-pagination" );
 	retrievePagination( "product", limit, searchfor, kategori, "div.sltg-pagination" );
 
 	$( "#data-limit" ).on( "change", function() {
-		//selected_page = 1;
 		limit = this.value;
-		//searchfor = "";//$( "#txt-search" ).val();
-		//if( isSearching ) searchfor = $( "#txt-search" ).val();
-
-		// $( ".pagination a.page-" + current_page).parent().removeClass("active");
-		// $( ".pagination a.page-" + selected_page ).parent().addClass("active");
-		//current_page = selected_page;
 
 		retrievePagination( "product", limit, searchfor, kategori, "div.sltg-pagination" );
-		//retrieveList( "#plugin-data-list" );
 	});	
 
 	$( "#data-filter-kategori").on( "change", function() {
@@ -95,17 +85,9 @@ jQuery(document).ready( function($) {
 				searchfor = "";
 				$( "#txt-search").val("");
 			}
-			//limit = $( "#data-limit" ).val();
 
-			/*searchfor = ( $( "#txt-search").val() ).split(' ').join('');;
-			if( searchfor != "" ) {
-				isSearching = true;
-			}*/
 			retrievePagination( "product", limit, searchfor, kategori, "div.sltg-pagination" );
 		}
-		//current_page = 1;
-		//selected_page = current_page;
-		//searchFor( searchfor, "#plugin-data-list" );
 	});
 
 });
