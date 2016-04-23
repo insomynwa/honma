@@ -1,7 +1,8 @@
 jQuery(document).ready( function ($) {
 
-	window.retrievePagination = function RetrivePagination( target_data, limit, searchfor, kategori, target_element ) {
-		var data = {
+	window.retrievePagination = function RetrivePagination( data, target_element ) {
+	// window.retrievePagination = function RetrivePagination( target_data, limit, searchfor, kategori, target_element ) {
+		/*var data = {
 			action: 'RetrievePaginationTemplate',
 			listfor: target_data,
 			limit: limit,
@@ -12,7 +13,7 @@ jQuery(document).ready( function ($) {
 		}
 		if( searchfor != "" ) {
 			data.search = searchfor;
-		}
+		}*/
 
 		$.get(
 			sltgtempscript.ajaxurl,
@@ -23,21 +24,22 @@ jQuery(document).ready( function ($) {
 		);
 	}
 
-	window.retrieveList = function RetrieveList( target_data, limit, page, searchfor, kategori, target_element) {
+	window.retrieveList = function RetrieveList( data, target_element) {
+	// window.retrieveList = function RetrieveList( target_data, limit, page, searchfor, kategori, target_element) {
 		//alert("TEST");
-		var data = {
-			action: 'RetrieveListTemplate',
-			listfor: target_data,
-			page: page,
-			limit: limit,
-			security: sltgtempscript.security
-		};
-		if( kategori != 0 ){
-			data.category = kategori;
-		}
-		if( searchfor != "" ) {
-			data.search = searchfor;
-		}
+		// var data = {
+		// 	action: 'RetrieveListTemplate',
+		// 	listfor: target_data,
+		// 	page: page,
+		// 	limit: limit,
+		// 	security: sltgtempscript.security
+		// };
+		// if( kategori != 0 ){
+		// 	data.category = kategori;
+		// }
+		// if( searchfor != "" ) {
+		// 	data.search = searchfor;
+		// }
 		$.get(
 			sltgtempscript.ajaxurl,
 			data,

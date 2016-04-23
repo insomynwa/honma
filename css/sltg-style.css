@@ -1,0 +1,314 @@
+.brick img {
+    margin: 0;
+    display: block;
+}
+
+.brick{
+    box-shadow:2px 2px 10px rgba(0,0,0,.4);
+}
+
+.brick h3 {
+    position:absolute;
+    top:-10px;
+    left:0px;
+    background:rgba(0,0,0,.3);
+    text-align:center;
+    padding-top:5px;
+    padding-bottom:5px;
+    color: #fff;
+    font-size: 1.3em;
+}
+.brick p {
+    padding: 5px 10px;
+}
+
+.sltg-filter {
+    background-color: #85c04b;
+    padding:10px;
+    color: #eee;
+}
+
+.sltg-filter select, .sltg-filter input, .sltg-filter button {
+    font-family:'ralewayregular';
+    border:0;
+}
+
+.filter-center button {
+    cursor:pointer;
+    color: #eee;
+    background-color:#73A740;
+}
+.filter-center button:hover {
+    background-color:#618C36;
+    color: #eee;
+}
+
+.filter-center button.searching {
+    background-color:#f00;
+    color:#eee;
+}
+
+.filter-center button:focus{
+    outline:none;
+}
+
+.sltg-content {
+    margin: 15px;
+}
+
+.sltg-pagination{
+    font-family: 'ralewaybold';
+    line-height:1;
+    text-align:center;
+}
+
+.sltg-pagination ul{
+    list-style:none;
+    position:relative;
+}
+.sltg-pagination li{
+    display:inline;
+}
+
+@media only screen and (min-width:1025px) and (max-width:1366px) {
+    .sltg-filter:after{
+        content:'';
+        clear:both;
+        display:table;
+    }
+
+    .sltg-filter div {
+        float:left;
+        padding:1%;
+        font-size:1.1em;
+    }
+
+    .sltg-filter select, .sltg-filter input[type='text'], .sltg-filter button {
+        font-size:1em;
+        margin:0;
+    }
+
+    .sltg-filter select {
+        padding:5px;
+    }
+
+    .filter-left {
+        width:28%;
+    }
+
+    .filter-left span, .filter-left select {
+        vertical-align:middle;
+    }
+
+    .filter-left span{
+        padding-right:5%;
+        width:35%;
+    }
+
+    .filter-left select{
+        width:60%;
+    }
+
+    .filter-center {
+        width:38%;
+    }
+
+    .filter-center input, .filter-center button {
+        display:inline-block;
+        font-size:1.1em;
+        padding:10px;
+        vertical-align:middle;
+    }
+
+    .filter-center input[type='text'] {
+        width:73%;
+    }
+
+    .filter-center button {
+        width:20%;
+    }
+
+    .filter-right {
+        width:28%;
+        text-align:right;
+    }
+
+    .filter-right span, .filter-right select {
+        vertical-align:middle;
+    }
+
+    .sltg-pagination{
+        font-size:14pt;
+    }
+
+    .sltg-pagination ul{
+        position:relative;
+        padding:5px;
+    }
+}
+
+@media only screen and (min-width:769px) and (max-width:1024px) {
+    .sltg-filter:after{
+        content:'';
+        clear:both;
+        display:table;
+    }
+
+    .sltg-filter div {
+        float:left;
+        padding:1%;
+        font-size:1.1em;
+    }
+
+    .sltg-filter select, .sltg-filter input[type='text'], .sltg-filter button {
+        font-size:1em;
+        margin:0;
+    }
+
+    .sltg-filter select {
+        padding:5px;
+    }
+
+    .filter-left {
+        width:28%;
+    }
+
+    .filter-left span, .filter-left select {
+        vertical-align:middle;
+    }
+
+    .filter-left span{
+        padding-right:5%;
+        width:35%;
+    }
+
+    .filter-left select{
+        width:60%;
+    }
+
+    .filter-center {
+        width:38%;
+    }
+
+    .filter-center input, .filter-center button {
+        display:inline-block;
+        font-size:1.1em;
+        padding:10px;
+        vertical-align:middle;
+    }
+
+    .filter-center input[type='text'] {
+        width:70%;
+    }
+
+    .filter-center button {
+        width:20%;
+    }
+
+    .filter-right {
+        width:28%;
+        text-align:right;
+    }
+
+    .filter-right span, .filter-right select {
+        vertical-align:middle;
+    }
+
+    .sltg-pagination{
+        font-size:14pt;
+    }
+
+    .sltg-pagination ul{
+        position:relative;
+        padding:5px;
+    }
+}
+
+@media only screen and (min-width:481px) and (max-width:768px) {
+    .sltg-filter:after{
+        content:'';
+        clear:both;
+        display:table;
+    }
+
+    .sltg-filter div {
+        float:left;
+        padding:1%;
+        font-size:1.1em;
+    }
+
+    .sltg-filter select, .sltg-filter input[type='text'], .sltg-filter button {
+        font-size:1em;
+        margin:0;
+    }
+
+    .sltg-filter select {
+        padding:5px;
+    }
+
+    .filter-left {
+        width:28%;
+    }
+
+    .filter-left span, .filter-left select {
+        vertical-align:middle;
+    }
+
+    .filter-left span{
+        padding-right:5%;
+        width:25%;
+    }
+
+    .filter-left select{
+        width:50%;
+    }
+
+    .filter-center {
+        width:68%;
+    }
+
+    .filter-center input, .filter-center button {
+        display:inline-block;
+        padding:6px;
+        vertical-align:middle;
+    }
+
+    .filter-center input[type='text'] {
+        width:78%;
+    }
+
+    .filter-center button {
+        width:15%;
+    }
+
+    .filter-right {
+        display:none;
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .filter-left{
+        margin-bottom:5px;
+    }
+        .filter-left span {
+            width:30%;
+            float:left;
+        }
+        .filter-left select {
+            width:70%;
+        }
+    .filter-center{
+        text-align:right;
+    }
+        .filter-center input{
+            float:left;
+            width:98%;
+            padding:1%;
+        }
+        .filter-center button{
+            width:50%;
+        }
+    .filter-right{
+        display:none;
+    }
+}

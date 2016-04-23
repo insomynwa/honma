@@ -1,7 +1,7 @@
 <?php
 /**
 *
-*	Template Name: Product
+*	Template Name: Music
 *
 */
 
@@ -14,20 +14,20 @@ get_header( 'sltg' );
 				<div class="gutter">
 					<article class="single_post sltg-wrapper">
 						<div class="sltg-filter">
-							<?php $kategoris = get_kategori_product(); ?>
-							<?php if ( sizeof( $kategoris ) > 0 ): ?>
+							<?php $genres = get_genre_music(); ?>
+							<?php if ( sizeof( $genres ) > 0 ): ?>
 								<div class="filter-left">
-									<span><?php /*$obj_salatiga_plugin->test2();*/ ?>Kategori</span>
-									<select id="data-filter-kategori">
+									<span><?php /*$obj_salatiga_plugin->test2();*/ ?>Genre</span>
+									<select id="data-filter-genre">
 										<option value="0">all</option>
-										<?php foreach( $kategoris as $kategori ): ?>
-											<option value="<?php _e( $kategori->GetID() ); ?>"><?php _e( $kategori->GetNama() ); ?></option>
+										<?php foreach( $genres as $genre ): ?>
+											<option value="<?php _e( $genre->GetID() ); ?>"><?php _e( $genre->GetNama() ); ?></option>
 										<?php endforeach; ?>
 									</select>
 								</div>
 							<?php endif; ?>
 							<div class="input-group filter-center">
-								<input type="text" id="txt-search" class="form-control" placeholder="(nama)">
+								<input type="text" id="txt-search" class="form-control" placeholder="(title)">
 								<span class="input-group-btn">
 									<button id="btn-search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search">Cari</span></button>
 								</span>
@@ -35,9 +35,9 @@ get_header( 'sltg' );
 							<div class="filter-right">
 								<span>Jumlah List</span>
 								<select id="data-limit">
-									<option value="1">1</option>
-									<option value="3">3</option>
-									<option value="100">100</option>
+									<option value="5">5</option>
+									<option value="10">10</option>
+									<option value="20">20</option>
 								</select>
 							</div>
 						</div>
@@ -55,36 +55,36 @@ jQuery(document).ready( function($) {
 	var limit = $( "#data-limit" ).val();
 	var searchfor = $( "#txt-search").val();
 	var isSearching = false;
-	var kategori = $( "#data-filter-kategori" ).val();
+	var genre = $( "#data-filter-genre" ).val();
 
 	var data = {
 			action: 'RetrievePaginationTemplate',
-			listfor: "product",
+			listfor: "music",
 			limit: limit
 		};
 
 	if( searchfor != "" ) {
 		data.search = searchfor;
 	}
-	if( kategori != 0 ) {
-		data.category = kategori;
+	if( genre != 0 ) {
+		data.genre = genre;
 	}
 
-	// retrievePagination( "product", limit, searchfor, kategori, "div.sltg-pagination" );
+	// retrievePagination( "music", limit, searchfor, genre, "div.sltg-pagination" );
 	retrievePagination( data, "div.sltg-pagination" );
 
 	$( "#data-limit" ).on( "change", function() {
 		limit = this.value;
 		data.limit = limit;
 
-		// retrievePagination( "product", limit, searchfor, kategori, "div.sltg-pagination" );
+		// retrievePagination( "music", limit, searchfor, genre, "div.sltg-pagination" );
 		retrievePagination( data, "div.sltg-pagination" );
 	});	
 
-	$( "#data-filter-kategori").on( "change", function() {
-		kategori = this.value;
-		data.category = kategori;
-		// retrievePagination( "product", limit, searchfor, kategori, "div.sltg-pagination" );
+	$( "#data-filter-genre").on( "change", function() {
+		genre = this.value;
+		data.genre = genre;
+		// retrievePagination( "music", limit, searchfor, genre, "div.sltg-pagination" );
 		retrievePagination( data, "div.sltg-pagination" );
 	});
 
@@ -107,7 +107,7 @@ jQuery(document).ready( function($) {
 			data.limit = limit;
 			data.search = searchfor;
 
-			// retrievePagination( "product", limit, searchfor, kategori, "div.sltg-pagination" );
+			// retrievePagination( "music", limit, searchfor, genre, "div.sltg-pagination" );
 			retrievePagination( data, "div.sltg-pagination" );
 		}
 	});

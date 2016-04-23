@@ -176,13 +176,14 @@ add_action( 'honma_display_credits', 'honma_credits' );
 * CUSTOM BY FIKA
 *
 * Content:
-* 1. Add Bootstrap & Custom Style
+* 1. Add Bootstrap & Custom Style 	(my_scripts_enqueue)
 * 2. Connect To Plugin
-* 	a. get Kategori
-*	b. get Detail Product
-* 3. Render Template
-* 4. Millitime
-* 5. Random Number
+* 	a. get Kategori 				(get_kategori_product)
+*	b. get Detail Product 			(get_detail_product)
+*	c. get Genre Music 				(get_genre_music)
+* 3. Render Template 				(get_html_template)
+* 4. Millitime 						(millitime)
+* 5. Random Number 					(rand_num)
 */
 // 1. Add Bootstrap
 // CDN
@@ -204,8 +205,11 @@ function my_scripts_enqueue() {
 	wp_enqueue_script( 'bootstrap-js' );
 	wp_enqueue_style( 'bootstrap-css' );
 	wp_enqueue_style( 'sltg-css');*/
+	wp_register_style( 'sltg-css', get_template_directory_uri() . '/css/sltg-style.css', false, NULL, 'all' );
 	wp_enqueue_script( 'sltg-template-script', get_template_directory_uri() . '/js/sltg-script.js', array( 'jquery' ) );
 	wp_enqueue_script( 'freewall-script', get_template_directory_uri() . '/js/freewall.js', array( 'jquery' ) );
+
+	wp_enqueue_style( 'sltg-css');
 
 	wp_localize_script( 'sltg-template-script', 'sltgtempscript', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'security' => wp_create_nonce( 'sltg-special-string') ) );
 
@@ -231,6 +235,7 @@ function get_kategori_product() {
 		return $arrKategori;
 	}
 }
+// b. get detail product
 function get_detail_product() {
 	if( class_exists( 'Salatiga_Plugin_Controller' ) ) {
 		$get_product = sanitize_text_field( $_GET[ 'product' ] );
@@ -239,6 +244,24 @@ function get_detail_product() {
 		$product->HasID( $get_product );
 		
 		return $product;
+
+	}
+}
+// c. get genre
+function get_genre_music() {
+	if( class_exists( 'Salatiga_Plugin_Controller' ) ) {
+		$genre_obj = new Sltg_Genre_Music();
+
+		$arrGenre = array();
+
+		$rows = $genre_obj->DataList();
+		foreach( $rows as $row ) {
+			$genre = new Sltg_Genre_Music();
+			$genre->HasID( $row->id_genre );
+			$arrGenre[] = $genre;
+		}
+
+		return $arrGenre;
 
 	}
 }

@@ -10,6 +10,7 @@ jQuery(document).ready(function($){
 	var selected_page = 1;
 	var limit = $( "#data-limit" ).val();
 	var kategori = $( "#data-filter-kategori" ).val();
+	var genre = $( "#data-filter-genre" ).val();
 	var searchfor = '';
 
 	if( $( "#btn-search" ).hasClass( 'searching' ) )
@@ -17,7 +18,24 @@ jQuery(document).ready(function($){
 
 	$( ".pagination a.page-" + selected_page ).parent().addClass( "active" );
 
-	retrieveList( "<?php _e($attributes[ 'listfor' ]); ?>", limit, selected_page, searchfor, kategori, "div.sltg-content");
+	var data = {
+			action: 'RetrieveListTemplate',
+			listfor: "<?php _e($attributes[ 'listfor' ]); ?>",
+			page: selected_page,
+			limit: limit
+	};
+	if( kategori != 0 ){
+		data.category = kategori;
+	}
+	if( searchfor != "" ) {
+		data.search = searchfor;
+	}
+	if( genre != 0 ){
+		data.genre = genre;
+	}
+
+	// retrieveList( "<?php _e($attributes[ 'listfor' ]); ?>", limit, selected_page, searchfor, kategori, "div.sltg-content");
+	retrieveList( data, "div.sltg-content");
 
 	$( ".pagination a").click( function() {
 		//limit = $( "#data-limit" ).val();
@@ -30,7 +48,10 @@ jQuery(document).ready(function($){
 		$( ".pagination a.page-" + selected_page ).parent().addClass("active");
 		current_page = selected_page;
 
-		retrieveList( "<?php _e($attributes[ 'listfor' ]); ?>", limit, selected_page, searchfor, kategori, "div.sltg-content" );
+		data.page = selected_page;
+
+		// retrieveList( "<?php _e($attributes[ 'listfor' ]); ?>", limit, selected_page, searchfor, kategori, "div.sltg-content" );
+		retrieveList( data, "div.sltg-content" );
 	});
 
 });
