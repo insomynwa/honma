@@ -181,6 +181,7 @@ add_action( 'honma_display_credits', 'honma_credits' );
 * 	a. get Kategori 				(get_kategori_product)
 *	b. get Detail Product 			(get_detail_product)
 *	c. get Genre Music 				(get_genre_music)
+*	d. get Detail Hotel				(get_detail_hotel)
 * 3. Render Template 				(get_html_template)
 * 4. Millitime 						(millitime)
 * 5. Random Number 					(rand_num)
@@ -262,6 +263,18 @@ function get_genre_music() {
 		}
 
 		return $arrGenre;
+
+	}
+}
+// d. get detail hotel
+function get_detail_hotel() {
+	if( class_exists( 'Salatiga_Plugin_Controller' ) ) {
+		$get_hotel = sanitize_text_field( $_GET[ 'hotel' ] );
+		$hotel = new Sltg_Hotel();
+
+		$hotel->HasID( $get_hotel );
+		
+		return $hotel;
 
 	}
 }
