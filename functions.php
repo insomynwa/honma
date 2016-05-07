@@ -178,10 +178,11 @@ add_action( 'honma_display_credits', 'honma_credits' );
 * Content:
 * 1. Add Bootstrap & Custom Style 	(my_scripts_enqueue)
 * 2. Connect To Plugin
-* 	a. get Kategori 				(get_kategori_product)
+* 	a. get Kategori Product			(get_kategori_product)
 *	b. get Detail Product 			(get_detail_product)
 *	c. get Genre Music 				(get_genre_music)
 *	d. get Detail Hotel				(get_detail_hotel)
+* 	e. get Kategori Craft			(get_kategori_craft)
 * 3. Render Template 				(get_html_template)
 * 4. Millitime 						(millitime)
 * 5. Random Number 					(rand_num)
@@ -218,7 +219,7 @@ function my_scripts_enqueue() {
 add_action( 'wp_enqueue_scripts', 'my_scripts_enqueue' );
 
 // 2. Connect To Plugin
-// a. get Kategori
+// a. get Kategori Product
 function get_kategori_product() {
 	//require ( '')
 	if( class_exists( 'Salatiga_Plugin_Controller' ) ) {
@@ -275,6 +276,36 @@ function get_detail_hotel() {
 		$hotel->HasID( $get_hotel );
 		
 		return $hotel;
+
+	}
+}
+// e. get Kategori Product
+function get_kategori_craft() {
+	//require ( '')
+	if( class_exists( 'Salatiga_Plugin_Controller' ) ) {
+		$kategoris = new Sltg_Kategori_Craft();
+
+		$arrKategori = array();
+
+		$rows = $kategoris->DataList();
+		foreach( $rows as $row ) {
+			$kategori = new Sltg_Kategori_Craft();
+			$kategori->HasID( $row->id_kategori );
+			$arrKategori[] = $kategori;
+		}
+
+		return $arrKategori;
+	}
+}
+// f. get detail craft
+function get_detail_craft() {
+	if( class_exists( 'Salatiga_Plugin_Controller' ) ) {
+		$get_craft = sanitize_text_field( $_GET[ 'craft' ] );
+		$craft = new Sltg_Craft();
+
+		$craft->HasID( $get_craft );
+		
+		return $craft;
 
 	}
 }
