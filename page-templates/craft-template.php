@@ -35,8 +35,8 @@ get_header( 'sltg' );
 							<div class="filter-right">
 								<span>Jumlah List</span>
 								<select id="data-limit">
-									<option value="1">1</option>
-									<option value="3">3</option>
+									<option value="20">20</option>
+									<option value="50">50</option>
 									<option value="100">100</option>
 								</select>
 							</div>
