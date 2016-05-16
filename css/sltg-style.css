@@ -85,7 +85,8 @@
     display:inline;
 }
 
-@media only screen and (min-width:1025px) and (max-width:1366px) {
+/*@media only screen and (min-width:1025px) and (max-width:1366px) { *//* <<<<<< FUCKING M-EDGE */ 
+@media only screen and (min-width:1025px) {
     .dual-area {
     }
 
@@ -95,7 +96,7 @@
     }
 
     .dual-area .image-area{
-        width:30%;
+        width:30% !important;
     }
 
     .dual-area .article-area{

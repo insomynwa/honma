@@ -21,6 +21,7 @@ $craft = get_detail_craft();
 								<h1><?php _e( $craft->GetNama() ); ?></h1>
 								<?php $numImg = sizeof( $craft->GetGambars() ); ?>
 							</div>
+							<hr>
 							<article>
 								<div class="image-area">
 									<div class="csslider1 autoplay">

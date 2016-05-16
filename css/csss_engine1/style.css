@@ -2,22 +2,24 @@
 /* ------------- General ------------- */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic);
 @font-face {
-  font-family: "cs-ctrl-basic";
-  src: url("cs-ctrl-basic.eot");
-  src: url("cs-ctrl-basic.eot#iefix") format("embedded-opentype"),
-      url("cs-ctrl-basic.woff") format("woff"),
-      url("cs-ctrl-basic.ttf") format("truetype"),
-      url("cs-ctrl-basic.svg#basic") format("svg");
-  font-weight: normal;
-  font-style: normal;
+	font-family: "cs-ctrl-basic";
+	src: url("cs-ctrl-basic.eot");
+	src: url("cs-ctrl-basic.eot#iefix") format("embedded-opentype"),
+			url("cs-ctrl-basic.woff") format("woff"),
+			url("cs-ctrl-basic.ttf") format("truetype"),
+			url("cs-ctrl-basic.svg#basic") format("svg");
+	font-weight: normal;
+	font-style: normal;
 }
 
 .csslider1 {
   display: inline-block;
   position: relative;
-  max-width: 100%; /* 640px */
+  max-width: 640px;
+  
+  
 
-  width:100%;
+  width: 100%;
 }
 .csslider1,
 .csslider1 *,
@@ -229,7 +231,7 @@
   opacity: 0;
   z-index: 1;
   line-height: 0;
-  left: -42.5px;
+  left: -32px;
   top: -48px;
 }
 .csslider1 > .cs_bullets > label > .cs_thumb > img {
@@ -550,32 +552,6 @@ _:-ms-input-placeholder, :root .csslider1 > .cs_arrownext > label span:after {
   background: #CBECFD;
 }
 
-
-.csslider1 > .cs_bullets > label > .cs_thumb {
-  border: 3px solid #CBECFD;
-  margin-top: -150%;
-  margin-left: 3px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-.csslider1 > .cs_bullets > label > .cs_thumb:before {
-  content: '';
-  position: absolute;
-  width: 0; 
-  height: 0; 
-  left: 50%;
-  margin-left: -4px;
-  bottom: -9px;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  
-  border-top: 7px solid #CBECFD;
-}
-.csslider1 > .cs_bullets > label:hover > .cs_thumb {
-  margin-top: -120px;
-  opacity: 1;
-  visibility: visible;
-}
 
 
 

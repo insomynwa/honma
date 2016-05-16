@@ -21,6 +21,7 @@ $product = get_detail_product();
 								<h1><?php _e( $product->GetNama() ); ?></h1>
 								<?php $numImg = sizeof( $product->GetGambars() ); ?>
 							</div>
+							<hr>
 							<article>
 								<div class="image-area">
 									<div class="csslider1 autoplay">
@@ -36,7 +37,7 @@ $product = get_detail_product();
 											<?php if( $gbr->GetGambarUtama() == 1 ): ?>
 											<li class="cs_skeleton"><img src="<?php _e( $gbr->GetLinkGambar() ); ?>?<?php echo millitime(); ?>" style="width: 100%;"></li>
 											<?php endif; ?>
-											<li class='num<?php _e($num); ?> img slide'>  <a href="#" target=""><img src='<?php _e( $gbr->GetLinkGambar() ); ?>?<?php echo millitime(); ?>' alt='' title='' /> </a> </li>
+											<li class='num<?php _e($num); ?> img slide'><img src='<?php _e( $gbr->GetLinkGambar() ); ?>?<?php echo millitime(); ?>' alt='' title='' /></li>
 											<?php $num += 1; ?>
 										<?php endforeach; ?>
 										</ul>
