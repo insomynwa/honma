@@ -183,6 +183,9 @@ add_action( 'honma_display_credits', 'honma_credits' );
 *	c. get Genre Music 				(get_genre_music)
 *	d. get Detail Hotel				(get_detail_hotel)
 * 	e. get Kategori Craft			(get_kategori_craft)
+* 	f. get Detail Craft				(get_detail_craft)
+* 	g. get Kategori Tourist Site	(get_kategori_touristsite)
+* 	h. get Detail Tourist Site		(get_detail_touristsite)
 * 3. Render Template 				(get_html_template)
 * 4. Millitime 						(millitime)
 * 5. Random Number 					(rand_num)
@@ -308,6 +311,36 @@ function get_detail_craft() {
 		$craft->HasID( $get_craft );
 		
 		return $craft;
+
+	}
+}
+// g. get Kategori Tourist Site
+function get_kategori_touristsite() {
+	//require ( '')
+	if( class_exists( 'Salatiga_Plugin_Controller' ) ) {
+		$kategoris = new Sltg_Kategori_TouristSite();
+
+		$arrKategori = array();
+
+		$rows = $kategoris->DataList();
+		foreach( $rows as $row ) {
+			$kategori = new Sltg_Kategori_TouristSite();
+			$kategori->HasID( $row->id_kategori );
+			$arrKategori[] = $kategori;
+		}
+
+		return $arrKategori;
+	}
+}
+// h. get detail Tourist Site
+function get_detail_touristsite() {
+	if( class_exists( 'Salatiga_Plugin_Controller' ) ) {
+		$get_touristsite = sanitize_text_field( $_GET[ 'touristsite' ] );
+		$touristsite = new SLtg_TouristSite();
+
+		$touristsite->HasID( $get_touristsite );
+		
+		return $touristsite;
 
 	}
 }
