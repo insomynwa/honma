@@ -67,7 +67,28 @@ $touristsite = get_detail_touristsite();
 									<hr>
 								</div>
 							</article>
-						</div>
+							<div>
+								<div id="sltg-map" style="height:400px"></div>
+								<script>
+								var map;
+								var thisPosition = { lat: <?php _e( $touristsite->GetLatitude() ); ?>, lng: <?php _e( $touristsite->GetLongitude() ); ?> };
+								function initMap() {
+									map = new google.maps.Map(document.getElementById('sltg-map'), {
+									  center: thisPosition, 
+									  zoom: 20
+									});
+
+									var marker = new google.maps.Marker( {
+										position: thisPosition,
+										map: map,
+										title: "<?php _e( $touristsite->GetNama() ); ?>"
+									});
+								}
+								</script>
+								<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1fLtne1FfQzHeuIqcD3B3sNvcZSqED_c&callback=initMap"
+								async defer></script>
+							</div>
+						</div> <!-- END sltg-content -->
 						<div class="sltg-pagination"></div>
 					</article>
 				</div>

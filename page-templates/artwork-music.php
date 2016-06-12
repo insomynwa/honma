@@ -13,37 +13,42 @@ get_header( 'sltg' );
 			<div class="page_section">
 				<div class="gutter">
 					<article class="single_post sltg-wrapper">
-						<div class="sltg-filter">
-							<?php $genres = get_genre_music(); ?>
-							<?php if ( sizeof( $genres ) > 0 ): ?>
-								<div class="filter-left">
-									<span><?php /*$obj_salatiga_plugin->test2();*/ ?>Genre</span>
-									<select id="data-filter-genre">
-										<option value="0">all</option>
-										<?php foreach( $genres as $genre ): ?>
-											<option value="<?php _e( $genre->GetID() ); ?>"><?php _e( $genre->GetNama() ); ?></option>
-										<?php endforeach; ?>
+						<div class="wrap-top">
+							<div class="sltg-filter">
+								<?php $genres = get_genre_music(); ?>
+								<?php if ( sizeof( $genres ) > 0 ): ?>
+									<div class="filter-left">
+										<span><?php /*$obj_salatiga_plugin->test2();*/ ?>Genre</span>
+										<select id="data-filter-genre">
+											<option value="0">all</option>
+											<?php foreach( $genres as $genre ): ?>
+												<option value="<?php _e( $genre->GetID() ); ?>"><?php _e( $genre->GetNama() ); ?></option>
+											<?php endforeach; ?>
+										</select>
+									</div>
+								<?php endif; ?>
+								<div class="input-group filter-center">
+									<input type="text" id="txt-search" class="form-control" placeholder="(title)">
+									<span class="input-group-btn">
+										<button id="btn-search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search">Cari</span></button>
+									</span>
+								</div>
+								<div class="filter-right">
+									<span>Jumlah List</span>
+									<select id="data-limit">
+										<option value="5">5</option>
+										<option value="10">10</option>
+										<option value="20">20</option>
 									</select>
 								</div>
-							<?php endif; ?>
-							<div class="input-group filter-center">
-								<input type="text" id="txt-search" class="form-control" placeholder="(title)">
-								<span class="input-group-btn">
-									<button id="btn-search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search">Cari</span></button>
-								</span>
-							</div>
-							<div class="filter-right">
-								<span>Jumlah List</span>
-								<select id="data-limit">
-									<option value="5">5</option>
-									<option value="10">10</option>
-									<option value="20">20</option>
-								</select>
 							</div>
 						</div>
-						<div id="sltg-content" class="sltg-content">
+						<div class="wrap-middle">
+							<div id="sltg-content" class="sltg-content">
+							</div>
+							<div class="sltg-pagination">
 						</div>
-						<div class="sltg-pagination"></div>
+						<div class="wrap-bottom"></div>
 					</article>
 				</div>
 			</div>

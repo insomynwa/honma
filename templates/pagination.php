@@ -34,13 +34,9 @@ jQuery(document).ready(function($){
 		data.genre = genre;
 	}
 
-	// retrieveList( "<?php _e($attributes[ 'listfor' ]); ?>", limit, selected_page, searchfor, kategori, "div.sltg-content");
 	retrieveList( data, "div.sltg-content");
 
 	$( ".pagination a").click( function() {
-		//limit = $( "#data-limit" ).val();
-		//kategori = $( "#data-filter-kategori" ).val();
-		//searchfor = $( "#txt-search").val();
 		
 		selected_page = $( this ).text();
 
@@ -50,7 +46,6 @@ jQuery(document).ready(function($){
 
 		data.page = selected_page;
 
-		// retrieveList( "<?php _e($attributes[ 'listfor' ]); ?>", limit, selected_page, searchfor, kategori, "div.sltg-content" );
 		retrieveList( data, "div.sltg-content" );
 	});
 
