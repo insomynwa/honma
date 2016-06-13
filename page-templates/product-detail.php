@@ -44,7 +44,6 @@ $product = get_detail_product();
 												<?php endforeach; ?>
 											</div>
 										</div>
-										<hr class="last-separator">
 									</div>
 								</article>
 								<div class="content-bottom">
@@ -57,7 +56,6 @@ $product = get_detail_product();
 									<hr>
 								</div> <!-- END content-bottom -->
 							</div>
-							<div class="sltg-pagination"></div>
 						</div> <!-- END wrap-middle -->
 						<div class="wrap-bottom"></div> <!-- END wrap-bottom -->
 					</article>

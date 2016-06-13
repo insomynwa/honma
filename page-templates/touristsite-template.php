@@ -54,11 +54,13 @@ get_header( 'sltg' );
 											<div class="grid-list-area">
 												<?php foreach( $kat->GetTouristSites() as $ts ): ?>
 														<div class="thumbnail-model thumbnail-grid"> <!-- thumbnail-grid && thumbnail-grid-img -->
-															<a href="<?php echo home_url().'/detail-tourist-site?touristsite='. $ts->GetID(); ?>">
+															<a class="link-img" href="<?php echo home_url().'/detail-tourist-site?touristsite='. $ts->GetID(); ?>">
 															<div class="thumbnail-model-img thumbnail-grid-img" style="background-image:url(<?php _e( $ts->GetGambarUtama()->GetLinkGambar() ); ?>?<?php echo millitime(); ?>)"></div>
-															<h4><?php _e( $ts->GetNama() ); ?></h4>
-															<p><?php _e( explode('. ', $ts->GetDeskripsi())[0] ); ?></p>
 															</a>
+															<a class="link-title" href="<?php echo home_url().'/detail-tourist-site?touristsite='. $ts->GetID(); ?>">
+															<h4><?php _e( $ts->GetNama() ); ?></h4>
+															</a>
+															<p class="thumbnail-model-desc thumbnail-grid-description"><?php _e( explode('. ', $ts->GetDeskripsi())[0] ); ?></p>
 														</div>
 												<?php endforeach; ?>
 											</div>
@@ -85,6 +87,20 @@ jQuery(document).ready( function($) {
 	$(window).trigger( 'resize' );
 	$( "#sltg-map").fadeOut();
 
+	$( ".thumbnail-grid").hover( function(){
+		$( this ).children('a.link-title').children('h4').addClass('to-top');
+		$( this ).children('p').fadeIn();
+	}, function() {
+		$( this ).children('a.link-title').children('h4').removeClass('to-top');
+		$( this ).children('p.thumbnail-grid-description').fadeOut();
+	});
+
+	/*$( ".thumbnail-grid p").hover( function(){
+		$( ".thumbnail-grid p").show();
+	}, function() {
+		$( ".thumbnail-grid p").hide();
+	});*/
+
 	$( "a.thumbnail-model-link").click( function(){
 		//alert(this.id);
 		$( ".mini-opt-left li").removeClass( "active" );
@@ -96,14 +112,18 @@ jQuery(document).ready( function($) {
 			$( ".thumbnail-model").addClass('thumbnail-grid');
 			$( ".thumbnail-model-img").removeClass('thumbnail-list-img');
 			$( ".thumbnail-model-img").addClass('thumbnail-grid-img');
-			$( "#sltg-map").fadeOut();
+			$( ".thumbnail-model-desc").removeClass('thumbnail-list-description');
+			$( ".thumbnail-model-desc").addClass('thumbnail-grid-description');
+			$( "#sltg-map").fadeOut('fast');
 			$( ".thumbnail-model").fadeIn();
 		}else if( type==2){
 			$( ".thumbnail-model").removeClass('thumbnail-grid');
 			$( ".thumbnail-model").addClass('thumbnail-list');
 			$( ".thumbnail-model-img").removeClass('thumbnail-grid-img');
 			$( ".thumbnail-model-img").addClass('thumbnail-list-img');
-			$( "#sltg-map").fadeOut();
+			$( ".thumbnail-model-desc").addClass('thumbnail-list-description');
+			$( ".thumbnail-model-desc").removeClass('thumbnail-grid-description');
+			$( "#sltg-map").fadeOut('fast');
 			$( ".thumbnail-model").fadeIn();
 		}else if( type==3) {
 			$( ".thumbnail-model").hide();
