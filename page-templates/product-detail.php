@@ -39,7 +39,8 @@ $product = get_detail_product();
 											<h2>Gallery</h2>
 											<div class="ctn-pictgrid">
 												<?php foreach( $product->GetGambars() as $gbr ): ?>
-												<a class="fancybox" rel="gallery1" href="<?php _e( $gbr->GetLinkGambar() ); ?>?<?php echo millitime(); ?>"><img class="pictgrid" src="<?php _e( $gbr->GetLinkGambar() ); ?>?<?php echo millitime(); ?>"></a>
+												<?php  $url = wp_get_attachment_thumb_url( $gbr->GetPostId() ); ?>
+												<a class="fancybox" rel="gallery1" href="<?php _e( $gbr->GetLinkGambar() ); ?>?<?php echo millitime(); ?>"><img class="pictgrid" src="<?php _e( $url ); ?>?<?php echo millitime(); ?>"></a>
 												<!-- <div class="pictgrid" style="background-image:url()"></div> -->
 												<?php endforeach; ?>
 											</div>
@@ -51,6 +52,22 @@ $product = get_detail_product();
 										<h2>Creator</h2>
 										<div>
 											<?php $ukm = $product->GetProducer(); _e( $ukm->GetNama() ); ?>
+											<?php $bigImg = $ukm->GetGambarUtama(); ?>
+											<?php  $url = wp_get_attachment_thumb_url( $bigImg->GetPostId() ); ?>
+											<img src="<?php _e( $url ); ?>?<?php echo millitime(); ?>">
+											<p><?php _e( $ukm->GetAlamat()); ?></p>
+											<p><?php _e( $ukm->GetDeskripsi()); ?></p>
+											<p><?php _e( $ukm->GetTelp()); ?></p>
+											<p><?php _e( $ukm->GetOther()); ?></p>
+											<ul>Other Product
+												<?php foreach( $ukm->GetProducts() as $prod ): ?>
+												<?php if($prod->GetId()!=$product->GetId()): ?>
+												<?php $bigImg = $prod->GetGambarUtama(); ?>
+												<?php  $url = wp_get_attachment_thumb_url( $bigImg->GetPostId() ); ?>
+												<li><a href="<?php echo home_url().'/detail-product?product='. $prod->GetID(); ?>"><img src="<?php _e( $url ); ?>?<?php echo millitime(); ?>"></a></li>
+												<?php endif; ?>
+												<?php endforeach; ?>
+											</ul>
 										</div>
 									</div>
 									<hr>

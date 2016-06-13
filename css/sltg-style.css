@@ -299,7 +299,7 @@ hr.last-separator {
 
     .ctn-pictgrid {
         abackground-color:red;
-        height:120px;
+        aheight:120px;
     }
 
     .ctn-pictgrid a {
@@ -371,7 +371,7 @@ hr.last-separator {
         padding:5px 10px;
         font-size:1em;
         font-family:'ralewayregular';
-        color:#999;
+        color:#eee;
         letter-spacing:1px;
     }
 

@@ -39,7 +39,8 @@ $touristsite = get_detail_touristsite();
 											<h2>Gallery</h2>
 											<div class="ctn-pictgrid">
 												<?php foreach( $touristsite->GetGambars() as $gbr ): ?>
-												<a class="fancybox" rel="gallery1" href="<?php _e( $gbr->GetLinkGambar() ); ?>?<?php echo millitime(); ?>"><img class="pictgrid" src="<?php _e( $gbr->GetLinkGambar() ); ?>?<?php echo millitime(); ?>"></a>
+												<?php  $url = wp_get_attachment_thumb_url( $gbr->GetPostId() ); ?>
+												<a class="fancybox" rel="gallery1" href="<?php _e( $gbr->GetLinkGambar() ); ?>?<?php echo millitime(); ?>"><img class="pictgrid" src="<?php _e( $url ); ?>?<?php echo millitime(); ?>"></a>
 												<!-- <div class="pictgrid" style="background-image:url()"></div> -->
 												<?php endforeach; ?>
 											</div>
