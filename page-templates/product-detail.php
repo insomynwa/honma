@@ -116,7 +116,7 @@ $product = get_detail_product();
 								</div>
 							</div> <!-- END content-bottom -->
 							<!-- </div> -->
-						</div> <!-- END wrap-middle -->
+						</div> <!-- END wrap-body -->
 						<div class="wrap-foot"></div> <!-- END wrap-bottom -->
 					</article>
 				</div>
