@@ -13,42 +13,64 @@ get_header( 'sltg' );
 			<div class="page_section">
 				<div class="gutter">
 					<article class="single_post sltg-wrapper">
-						<div class="wrap-top">
-							<div class="sltg-filter">
-								<?php $kategoris = get_kategori_product(); ?>
-								<?php if ( sizeof( $kategoris ) > 0 ): ?>
-									<div class="filter-left">
-										<p><?php /*$obj_salatiga_plugin->test2();*/ ?>Kategori</p>
-										<select id="data-filter-kategori">
-											<option value="0">all</option>
-											<?php foreach( $kategoris as $kategori ): ?>
-												<option value="<?php _e( $kategori->GetID() ); ?>"><?php _e( $kategori->GetNama() ); ?></option>
-											<?php endforeach; ?>
-										</select>
+						<div class="wrap-head">
+							<div class="content-wrapper wrap-navi">
+								<div class="content-holder">
+									<div class="content-holder-body">
+										<div class="chb-column column-3">
+											<?php $kategoris = get_kategori_product(); ?>
+											<?php if ( sizeof( $kategoris ) > 0 ): ?>
+												<div class="single-row filter-left0">
+													<p class="column-5"><?php /*$obj_salatiga_plugin->test2();*/ ?>Kategori</p>
+													<select class="column-5" id="data-filter-kategori">
+														<option value="0">all</option>
+														<?php foreach( $kategoris as $kategori ): ?>
+															<option value="<?php _e( $kategori->GetID() ); ?>"><?php _e( $kategori->GetNama() ); ?></option>
+														<?php endforeach; ?>
+													</select>
+												</div>
+											<?php endif; ?>
+										</div>
+										<div class="chb-column column-5">
+											<div class="single-row input-group0 filter-center0">
+												<input type="text" id="txt-search" class="form-control column-7" placeholder="(nama)">
+												<span class="input-group-btn column-3">
+													<button id="btn-search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search">Cari</span></button>
+												</span>
+											</div>
+										</div>
+										<div class="chb-column column-2">
+											<div class="single-row filter-right0">
+												<p class="column-5">Jumlah List</p>
+												<select id="data-limit" class="column-5">
+													<option value="25">25</option>
+													<option value="50">50</option>
+													<option value="100">100</option>
+												</select>
+											</div>
+										</div>
 									</div>
-								<?php endif; ?>
-								<div class="input-group filter-center">
-									<input type="text" id="txt-search" class="form-control" placeholder="(nama)">
-									<span class="input-group-btn">
-										<button id="btn-search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search">Cari</span></button>
-									</span>
-								</div>
-								<div class="filter-right">
-									<p>Jumlah List</p>
-									<select id="data-limit">
-										<option value="25">25</option>
-										<option value="50">50</option>
-										<option value="100">100</option>
-									</select>
 								</div>
 							</div>
 						</div>
-						<div class="wrap-middle">
-							<div id="sltg-content" class="sltg-content">
+						<div class="wrap-body">
+							<div class="content-wrapper">
+								<div class="content-holder main-content">
+									<div class="content-holder-body">
+										<div class="chb-column column-10">
+											<div id="sltg-content" class="sltg-content">
+											</div>
+										</div>
+									</div>
+									<div class="content-holder-foot">
+										<div class="chb-column column-10">
+											<div class="sltg-pagination"></div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="sltg-pagination"></div>
 						</div>
-						<div class="wrap-bottom"></div>
+						<div class="wrap-foot"></div>
 					</article>
 				</div>
 			</div>
