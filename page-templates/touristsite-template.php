@@ -28,52 +28,75 @@ get_header( 'sltg' );
 			<div class="page_section">
 				<div class="gutter">
 					<article class="single_post sltg-wrapper">
-						<div class="wrap-top">
-							<div class="wrap-navi">
-								<a href="<?php _e( home_url()); ?>">Home</a> / <a href="#" class="active">Tourist Site</a>
+						<div class="wrap-head">
+							<div class="content-wrapper wrap-navi">
+								<div class="content-holder">
+									<div class="content-holder-body">
+										<div class="chb-column column-10">
+											<a href="<?php _e( home_url()); ?>">Home</a> / <a href="#" class="active">Tourist Site</a>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="wrap-middle">
-							<div class="sltg-content" class="sltg-content">
-								<div class="content-top">
-								</div> <!-- END content-top -->
-								<div class="content-middle">
-									<div class="ctn-md-large-max">
-										<div class="mini-opt">
-											<ul class="mini-opt-left">
-												<li class="active"><a id="thumbnail-model-1" class="thumbnail-model-link" href="#">Grid</a></li>
-												<li><a id="thumbnail-model-2" class="thumbnail-model-link" href="#">List</a></li>
-												<li><a id="thumbnail-model-3" class="thumbnail-model-link" href="#">Map</a></li>
+						<div class="wrap-body">
+							<div class="content-wrapper content-navi">
+								<div class="content-holder">
+									<div class="content-holder-body">
+										<div class="chb-column column-10">
+											<ul class="mini-opt-left0">
+												<li class="active"><a id="0thumbnail-model-1" class="0thumbnail-model-link" href="#">Grid</a></li>
+												<li><a id="0thumbnail-model-2" class="0thumbnail-model-link" href="#">List</a></li>
+												<li><a id="0thumbnail-model-3" class="0thumbnail-model-link" href="#">Map</a></li>
 											</ul>
 										</div>
 									</div>
-									<?php if( sizeof($arrKats) > 0 ): ?>
-										<?php foreach($arrKats as $kat) : ?>
-										<div class="ctn-md-large-max">
-											<!-- <div ><h2><?php // _e( strtoupper($kat->GetNama()) ); ?></h2></div> -->
-											<div class="grid-list-area">
+								</div>
+							</div>
+							<div class="content-wrapper tourist-content">
+								<div class="content-holder">
+									<div class="content-holder-body">
+										<?php if( sizeof($arrKats) > 0 ): ?>
+											<?php foreach($arrKats as $kat) : ?>
+											<!-- <div class="ctn-md-large-max0"> -->
+												<!-- <div ><h2><?php // _e( strtoupper($kat->GetNama()) ); ?></h2></div> -->
+											<div class="chb-column column-10 grid-body grid-list-area0">
 												<?php foreach( $kat->GetTouristSites() as $ts ): ?>
-														<div class="thumbnail-model thumbnail-grid"> <!-- thumbnail-grid && thumbnail-grid-img -->
-															<a class="link-img" href="<?php echo home_url().'/detail-tourist-site?touristsite='. $ts->GetID(); ?>">
-															<div class="thumbnail-model-img thumbnail-grid-img" style="background-image:url(<?php _e( $ts->GetGambarUtama()->GetLinkGambar() ); ?>?<?php echo millitime(); ?>)"></div>
-															</a>
-															<a class="link-title" href="<?php echo home_url().'/detail-tourist-site?touristsite='. $ts->GetID(); ?>">
-															<h4><?php _e( $ts->GetNama() ); ?></h4>
-															</a>
-															<p class="thumbnail-model-desc thumbnail-grid-description"><?php _e( explode('. ', $ts->GetDeskripsi())[0] ); ?></p>
+														<div class="grid-column g-column-4 thumbnail-model0 thumbnail-grid0"> <!-- thumbnail-grid && thumbnail-grid-img -->
+															<div class="grid-content">
+																<a class="img-a link-img0" href="<?php echo home_url().'/detail-tourist-site?touristsite='. $ts->GetID(); ?>">
+																<div class="thumbnail-model-img0 thumbnail-grid-img0" style="background-image:url(<?php _e( $ts->GetGambarUtama()->GetLinkGambar() ); ?>?<?php echo millitime(); ?>)"></div>
+																</a>
+																<a class="title-a link-title0" href="<?php echo home_url().'/detail-tourist-site?touristsite='. $ts->GetID(); ?>">
+																<h4><?php _e( $ts->GetNama() ); ?></h4>
+																</a>
+																<p class="thumbnail-model-desc0 thumbnail-grid-description0"><?php _e( explode('. ', $ts->GetDeskripsi())[0] ); ?></p>
+															</div>
+														</div>
+												<?php endforeach; ?>
+												<?php foreach( $kat->GetTouristSites() as $ts ): ?>
+														<div class="grid-column g-column-4 thumbnail-model0 thumbnail-grid0"> <!-- thumbnail-grid && thumbnail-grid-img -->
+															<div class="grid-content">
+																<a class="img-a link-img0" href="<?php echo home_url().'/detail-tourist-site?touristsite='. $ts->GetID(); ?>">
+																<div class="thumbnail-model-img0 thumbnail-grid-img0" style="background-image:url(<?php _e( $ts->GetGambarUtama()->GetLinkGambar() ); ?>?<?php echo millitime(); ?>)"></div>
+																</a>
+																<a class="title-a link-title0" href="<?php echo home_url().'/detail-tourist-site?touristsite='. $ts->GetID(); ?>">
+																<h4><?php _e( $ts->GetNama() ); ?></h4>
+																</a>
+																<p class="thumbnail-model-desc0 thumbnail-grid-description0"><?php _e( explode('. ', $ts->GetDeskripsi())[0] ); ?></p>
+															</div>
 														</div>
 												<?php endforeach; ?>
 											</div>
-											<div id="sltg-map"></div>
-										</div>
-										<?php endforeach; ?>
-									<?php endif; ?>
-								</div> <!-- END content-middle -->
-								<div class="content-bottom"></div> <!-- END content-bottom -->
-							</div> <!-- END sltg-content -->
-						</div> <!-- END wrap-middle -->
-						<div class="wrap-bottom">
-											
+												<div id="sltg-map"></div>
+											<!-- </div> -->
+											<?php endforeach; ?>
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>
+						</div> <!-- END wrap-body -->
+						<div class="wrap-foot">
 						</div>
 					</article>
 				</div>
@@ -87,12 +110,14 @@ jQuery(document).ready( function($) {
 	$(window).trigger( 'resize' );
 	$( "#sltg-map").fadeOut();
 
-	$( ".thumbnail-grid").hover( function(){
-		$( this ).children('a.link-title').children('h4').addClass('to-top');
+	$( ".grid-content").hover( function(){
+		$( this ).children('a.title-a').children('h4').addClass('to-top');
+		$( this ).children('a.img-a').children('div').addClass('transparent-down');
 		$( this ).children('p').fadeIn();
 	}, function() {
-		$( this ).children('a.link-title').children('h4').removeClass('to-top');
-		$( this ).children('p.thumbnail-grid-description').fadeOut();
+		$( this ).children('a.title-a').children('h4').removeClass('to-top');
+		$( this ).children('a.img-a').children('div').removeClass('transparent-down');
+		$( this ).children('p').fadeOut();
 	});
 
 	/*$( ".thumbnail-grid p").hover( function(){
