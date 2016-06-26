@@ -260,16 +260,27 @@ hr.last-separator {
                 abackground-color:purple;
             }
 
-            .grid-body {
+            .thumb-holder {
                 background-color:#fff;
             }
 
-            .grid-column {
-                abackground-color:green;
+            .thumb-holder-body {
                 float:left;
             }
 
-            .g-column-4 {
+            /*.grid-column {
+                abackground-color:green;
+                float:left;
+            }*/
+
+            .thb-column-2 {
+                abackground-color:blue;
+                apadding:10px;
+                width:50%;
+                aheight:200px;
+            }
+
+            .thb-column-4 {
                 abackground-color:blue;
                 apadding:10px;
                 width:25%;
@@ -284,8 +295,22 @@ hr.last-separator {
                 position:relative;
             }
 
+            .list-content {
+                background-color:rgba(0,0,0,.04);
+                margin:5px;
+                height:200px;
+                amarginpadding:5px;
+                position:relative;
+            }
+
             .grid-content .img-a div{
                 height:200px;
+                background-size:cover;
+            }
+
+            .list-content .img-a div{
+                height:200px;
+                width:50%;
                 background-size:cover;
             }
 
@@ -306,6 +331,20 @@ hr.last-separator {
                 letter-spacing:1px;
             }
 
+            .list-content .title-a h4 {
+                background-color: rgba(0,0,0,.6);
+                position:absolute;
+                abottom:-10px;
+                width:50%;
+                color: #eee;
+                text-align:center;
+                padding:10px 0;
+                font-size:1.1em;
+                letter-spacing:1px;
+                top:-10px;
+                left:50%;
+            }
+
             .grid-content p{
                 display:none;
                 background-color: rgba(255,255,255,.8);
@@ -318,6 +357,19 @@ hr.last-separator {
                 text-align:left;
                 color:#333;
                 z-index:2;
+            }
+
+            .list-content p{
+                abackground-color: rgba(255,255,255,.8);
+                text-align:left;
+                color:#333;
+                z-index:2;
+                position:absolute;
+                width:40%;
+                right:0;
+                top:30px;
+                height:150px;
+                padding:10px 5%;
             }
 
             .grid-content h4.to-top {
@@ -458,6 +510,11 @@ hr.last-separator {
 
     .tourist-content{
         background-color:#eee;
+    }
+
+    #sltg-map {
+        height: 500px;
+        width: 1024px;
     }
 
 /*     .wrap-head{
