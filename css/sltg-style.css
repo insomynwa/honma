@@ -535,6 +535,17 @@ hr.last-separator {
         width: 1024px;
     }
 
+    .music-list {
+        background-color:#fff;
+        margin-bottom:10px;
+    }
+
+    .music-list h4 {
+        color:#fff;
+        background-color:#E40F0F;
+        padding:5px 10px;
+    }
+
 /*     .wrap-head{
         abackground-color:#85c04b;
         abackground-color:#73A740;
