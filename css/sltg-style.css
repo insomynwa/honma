@@ -255,6 +255,12 @@ hr.last-separator {
                 amargin:10px;
             }
 
+            .column-8 {
+                width:80%;
+                abackground-color:yellow;
+                amargin:10px;
+            }
+
             .column-10 {
                 width:100%;
                 abackground-color:purple;
@@ -454,7 +460,7 @@ hr.last-separator {
     }
 
     .gallery-content h2 {
-        color:#333;
+        color:#fff;
     }
 
     .creator-content{
@@ -510,6 +516,18 @@ hr.last-separator {
 
     .tourist-content{
         background-color:#eee;
+    }
+
+    .map-content {
+        background-color:#FF7F2A;
+    }
+
+    .map-content .content-holder-head {
+        background-color:#E86914;
+    }
+
+    .map-content h2 {
+        color:#fff;
     }
 
     #sltg-map {

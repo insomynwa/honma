@@ -13,26 +13,50 @@ get_header( 'sltg' );
 			<div class="page_section">
 				<div class="gutter">
 					<article class="single_post sltg-wrapper">
-						<div class="sltg-filter">
-							<div class="filter-left"></div>
-							<div class="input-group filter-center">
-								<input type="text" id="txt-search" class="form-control" placeholder="(title)">
-								<span class="input-group-btn">
-									<button id="btn-search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search">Cari</span></button>
-								</span>
-							</div>
-							<div class="filter-right">
-								<span>Jumlah List</span>
-								<select id="data-limit">
-									<option value="5">5</option>
-									<option value="10">10</option>
-									<option value="20">20</option>
-								</select>
+						<div class="wrap-head">
+							<div class="content-wrapper wrap-navi">
+								<div class="content-holder">
+									<div class="content-holder-body">
+										<div class="chb-column column-8">
+											<div class="single-row input-group0 filter-center0">
+												<input type="text" id="txt-search" class="form-control column-7" placeholder="(nama)">
+												<span class="input-group-btn column-3">
+													<button id="btn-search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search">Cari</span></button>
+												</span>
+											</div>
+										</div>
+										<div class="chb-column column-2">
+											<div class="single-row filter-right0">
+												<p class="column-5">Jumlah List</p>
+												<select id="data-limit" class="column-5">
+													<option value="10">10</option>
+													<option value="20">20</option>
+													<option value="50">50</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div id="sltg-content" class="sltg-content">
+						<div class="wrap-body">
+							<div class="content-wrapper">
+								<div class="content-holder main-content">
+									<div class="content-holder-body">
+										<div class="chb-column column-10">
+											<div id="sltg-content" class="sltg-content">
+											</div>
+										</div>
+									</div>
+									<div class="content-holder-foot">
+										<div class="chb-column column-10">
+											<div class="sltg-pagination"></div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="sltg-pagination"></div>
+						<div class="wrap-foot"></div>
 					</article>
 				</div>
 			</div>
